@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decision Analysis</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Combined CSS from both styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #eef2f3, #ffffff);
+      color: #333;
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #007bff;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    main {
+      margin-top: 20px;
+    }
+
+    section h2 {
+      color: #007bff;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+    }
+
+    .scenario h3 {
+      color: #333;
+      font-size: 1.4rem;
+      margin-top: 20px;
+    }
+
+    .scenario ul {
+      padding-left: 20px;
+    }
+
+    .scenario ul li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      margin-top: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    canvas {
+      width: 100%;
+      height: 400px;
+    }
+
+    .notes {
+      margin-top: 40px;
+    }
+
+    .notes h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .notes ul {
+      list-style-type: none;
+    }
+
+    .notes ul li {
+      margin-bottom: 15px;
+    }
+
+    .notes ul li strong {
+      color: #007bff;
+    }
+
+    .notes p {
+      font-size: 1rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Decision Analysis: Choosing the Right Action</h1>
+    <p>Explore the factors, financial states, and education levels influencing support in various scenarios.</p>
+  </header>
+  <main>
+    <!-- Section from First HTML -->
+    <section>
+      <h2>Factors and Scenarios</h2>
+      <p>Here are the actions and the types of people most likely to support each, along with key behavioral, financial, and educational traits.</p>
+      <div class="scenario">
+        <h3>1. Hiring a Lawyer</h3>
+        <ul>
+          <li><strong>Type of Person:</strong> Empathetic Man</li>
+          <li><strong>Behavior in Conversations:</strong> Shows patience, asks logical questions, and is genuinely interested in understanding your predicament. Might discuss your safety and professional future.</li>
+          <li><strong>Attention to You:</strong> Listens carefully, responds with thoughtful suggestions, and avoids rushing conclusions.</li>
+          <li><strong>Financial State:</strong> Likely middle-class or affluent, as they value stability and understand legal expenses.</li>
+          <li><strong>Education:</strong> Well-educated, with knowledge of legal and professional systems, perhaps a degree in law, business, or a related field.</li>
+          <li><strong>Topics They Enjoy:</strong> Topics involving responsibility, problem-solving, or career growth.</li>
+        </ul>
+      </div>
+      <div class="scenario">
+        <h3>2. Paying for a Replacement</h3>
+        <ul>
+          <li><strong>Type of Person:</strong> Skeptical Man</li>
+          <li><strong>Behavior in Conversations:</strong> Pragmatic and analytical. Focuses on the practicality of paying someone else to fulfill your role. Questions details to ensure there are no loopholes.</li>
+          <li><strong>Attention to You:</strong> Partial attention; more focused on resolving the issue rather than your emotional concerns.</li>
+          <li><strong>Financial State:</strong> Comfortable or wealthy, as they understand the financial implications and are more inclined to value cost-efficiency.</li>
+          <li><strong>Education:</strong> Moderately educated, likely with practical knowledge in finance or operations.</li>
+          <li><strong>Topics They Enjoy:</strong> Finances, logistics, and alternative solutions.</li>
+        </ul>
+      </div>
+      <div class="scenario">
+        <h3>3. Running Away</h3>
+        <ul>
+          <li><strong>Type of Person:</strong> Manipulative Man</li>
+          <li><strong>Behavior in Conversations:</strong> Encouraging but with hidden motives. Often dismisses risks or legality while subtly steering you toward reckless decisions. Might flatter you excessively or exaggerate your options.</li>
+          <li><strong>Attention to You:</strong> High attention but for personal gain. Will appear supportive but may exploit your vulnerability.</li>
+          <li><strong>Financial State:</strong> Often less wealthy or struggling, as they see personal benefit in others taking risks.</li>
+          <li><strong>Education:</strong> Low to average education, likely unfamiliar with complex systems or legal consequences.</li>
+          <li><strong>Topics They Enjoy:</strong> Quick fixes, shortcuts, and emotional appeals.</li>
+        </ul>
+      </div>
+      <div class="scenario">
+        <h3>4. Shipping the Package</h3>
+        <ul>
+          <li><strong>Type of Person:</strong> Idealistic Man</li>
+          <li><strong>Behavior in Conversations:</strong> Optimistic and understanding. Encourages you to take action for a greater purpose but might overlook critical risks. Emphasizes trust and emotional motivation.</li>
+          <li><strong>Attention to You:</strong> Balanced attention; focuses on your reasoning and the importance of the task.</li>
+          <li><strong>Financial State:</strong> Moderate to well-off; they are more likely to empathize with financial or emotional challenges.</li>
+          <li><strong>Education:</strong> Average to high education, with a tendency to trust humanitarian or personal values over legal strictness.</li>
+          <li><strong>Topics They Enjoy:</strong> Personal goals, helping others, and moral responsibility.</li>
+        </ul>
+      </div>
+      <div class="scenario">
+        <h3>5. Requesting Help for Your Daughter</h3>
+        <ul>
+          <li><strong>Type of Person:</strong> Empathetic Man</li>
+          <li><strong>Behavior in Conversations:</strong> Emotionally connected, asks thoughtful questions about your daughter’s health, and seeks ways to assist. Shows genuine concern and reassurance.</li>
+          <li><strong>Attention to You:</strong> Full attention; likely to follow up frequently and express empathy for your struggles.</li>
+          <li><strong>Financial State:</strong> Comfortable to wealthy, as they are more likely to provide financial or logistical assistance.</li>
+          <li><strong>Education:</strong> Moderate to high education, likely understanding medical or humanitarian needs.</li>
+          <li><strong>Topics They Enjoy:</strong> Family, health, meaningful solutions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Graph Section from Second HTML -->
+    <div class="container">
+      <h2>Comparison of Actions Based on Factors</h2>
+      <canvas id="myChart"></canvas>
+      <div class="notes">
+        <h2>Notes:</h2>
+        <ul>
+          <li><strong>Hiring a Lawyer:</strong> This option scores high for legality, time & effort, and the possibility of belief, but the cost is significant. It poses a low risk and has neutral or positive long-term implications.</li>
+          <li><strong>Paying for a Replacement:</strong> It involves a relatively high cost and time & effort but remains legal and poses low risk. Long-term implications are neutral, and the possibility of belief depends on trust.</li>
+          <li><strong>Running Away:</strong> This option has low cost and poses high risks. It’s illegal and could lead to significant negative long-term implications, and there’s low likelihood of others believing you.</li>
+          <li><strong>Shipping the Package:</strong> While it has moderate cost, it carries significant risks and legal issues. The long-term implications are negative, and there’s a moderate chance of someone believing you depending on how it's presented.</li>
+          <li><strong>Requesting Help for Your Daughter:</strong> This is the least costly and legal option. It involves moderate time & effort and has a higher chance of people believing you, with relatively positive or neutral long-term implications.</li>
+        </ul>
+        <p>This comparison helps clarify the trade-offs involved in each situation, from both practical and emotional perspectives.</p>
+      </div>
+    </div>
+  </main>
+
+  
+  <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    const data = {
+      labels: ['Hiring a Lawyer', 'Paying for a Replacement', 'Running Away', 'Package', 'Requesting Help for Daughter'],
+      datasets: [
+        {
+          label: 'Cost',
+          data: [8, 4, 3, 7, 6],
+          backgroundColor: 'orange',
+        },
+        {
+          label: 'Time & Effort',
+          data: [7, 6, 9, 8, 6],
+          backgroundColor: 'red',
+        },
+        {
+          label: 'Legality',
+          data: [3, 4, 6, 5, 7],
+          backgroundColor: 'pink',
+        },
+        {
+          label: 'Risk',
+          data: [6, 3, 9, 7, 5],
+          backgroundColor: 'blue',
+        },
+        {
+          label: 'Long-Term Implications',
+          data: [7, 5, 8, 6, 9],
+          backgroundColor: 'cyan',
+        },
+        {
+          label: 'Possibility of Believing You',
+          data: [6, 5, 4, 1, 9], // Updated Package (1) and Help for Daughter (9)
+          backgroundColor: 'lightblue',
+        }
+      ]
+    };
+
+    const config = {
+      type: 'bar',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+          },
+          y: {
+            beginAtZero: true,
+          }
+        }
+      }
+    };
+
+    const myChart = new Chart(ctx, config);
+  </script>
+  <header>
+        <h1>Personality Types and How to Identify Them</h1>
+    </header>
+
+    <section class="personality-type">
+        <h2>Empathetic Man</h2>
+        <div class="question">
+            <strong>Questions to Find Out if Someone is an Empathetic Man:</strong>
+            <ul>
+                <li>How do you typically feel when you see someone in a difficult situation?</li>
+                <li>If someone you know was struggling with a personal issue, would you try to help them even if it meant putting your own needs aside?</li>
+                <li>When you hear about someone going through tough times, do you feel moved to offer support, whether emotional or practical?</li>
+            </ul>
+        </div>
+        <div class="response">
+            <strong>How an Empathetic Man Would Respond:</strong>
+            <p>An empathetic man would say something like: 
+                "I always try to put myself in their shoes. If I can help, even just by listening or offering support, I will do it. It's important to me that people feel like they aren't alone."
+            </p>
+        </div>
+        <div class="note">
+            <strong>Note:</strong> An Empathetic Man is genuinely concerned about others' well-being and tends to offer help and emotional support without expecting anything in return. He may not need proof of your distress but will want to listen to your concerns with compassion.
+        </div>
+    </section>
+
+    <section class="personality-type">
+        <h2>Skeptical Man</h2>
+        <div class="question">
+            <strong>Questions to Find Out if Someone is a Skeptical Man:</strong>
+            <ul>
+                <li>How do you feel about situations that seem too good to be true?</li>
+                <li>When you hear about someone's personal problem, do you usually ask for proof before believing them?</li>
+                <li>How often do you question the intentions of people who offer help or support?</li>
+            </ul>
+        </div>
+        <div class="response">
+            <strong>How a Skeptical Man Would Respond:</strong>
+            <p>A skeptical man might say something like: 
+                "I prefer to look at the facts and make sure everything checks out before jumping to conclusions. I don’t like to trust things just because someone says them."
+            </p>
+        </div>
+        <div class="note">
+            <strong>Note:</strong> A Skeptical Man is focused on logic and facts. He often requires solid proof before he believes anything. If you're trying to convince him, you should be prepared to provide evidence.
+        </div>
+    </section>
+
+    <section class="personality-type">
+        <h2>Manipulative Man</h2>
+        <div class="question">
+            <strong>Questions to Find Out if Someone is a Manipulative Man:</strong>
+            <ul>
+                <li>How do you typically deal with conflict or disagreements?</li>
+                <li>Have you ever found yourself using someone’s feelings to get what you want?</li>
+                <li>What’s your approach when someone asks for help but doesn't give you anything in return?</li>
+            </ul>
+        </div>
+        <div class="response">
+            <strong>How a Manipulative Man Would Respond:</strong>
+            <p>A manipulative man might say something like: 
+                "I try to make situations work for my benefit. People are always looking for a way to get ahead, and I do the same. If I help someone, I expect something in return, even if it's just respect or loyalty."
+            </p>
+        </div>
+        <div class="note">
+            <strong>Note:</strong> A Manipulative Man tends to use others for his personal benefit. He might only help others if there is something in it for him, and he often uses emotional leverage to get what he wants.
+        </div>
+    </section>
+
+    <section class="personality-type">
+        <h2>Idealistic Man</h2>
+        <div class="question">
+            <strong>Questions to Find Out if Someone is an Idealistic Man:</strong>
+            <ul>
+                <li>What motivates you to help others in need?</li>
+                <li>Do you believe that people have a duty to improve the world, even if it’s challenging?</li>
+                <li>When faced with tough decisions, do you consider the greater good or what’s best for society?</li>
+            </ul>
+        </div>
+        <div class="response">
+            <strong>How an Idealistic Man Would Respond:</strong>
+            <p>An idealistic man is likely to say something like: 
+                "I believe that helping others is what makes life meaningful. Even when things are hard, I try to focus on what’s right, not what’s easy."
+            </p>
+        </div>
+        <div class="note">
+            <strong>Note:</strong> An Idealistic Man is driven by a sense of purpose and moral responsibility. He’s likely to make decisions based on principles rather than convenience, often focusing on making the world a better place.
+        </div>
+    </section>
+
+    <section class="personality-type">
+        <h2>Practical Man</h2>
+        <div class="question">
+            <strong>Questions to Find Out if Someone is a Practical Man:</strong>
+            <ul>
+                <li>When faced with a problem, do you prefer to find the most straightforward and efficient solution?</li>
+                <li>How do you approach situations where emotions are involved?</li>
+                <li>Do you think long-term planning is more important than short-term solutions?</li>
+            </ul>
+        </div>
+        <div class="response">
+            <strong>How a Practical Man Would Respond:</strong>
+            <p>A practical man might answer with: 
+                "I prefer to deal with things logically. If a solution works and is efficient, that’s what I’ll go with. I don’t overcomplicate things."
+            </p>
+        </div>
+        <div class="note">
+            <strong>Note:</strong> A Practical Man is all about efficiency and tangible results. He doesn’t dwell too much on emotions but prefers solutions that are straightforward and effective.
+        </div>
+    </section>
+
+    <div class="questionnaire">
+        
+    </div>
+      <footer>
+    <p>&copy; 2024 Decision Analysis Guide</p>
+  </footer>
+
+</body>
+</html>
